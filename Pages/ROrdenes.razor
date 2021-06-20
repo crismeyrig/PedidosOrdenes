@@ -163,6 +163,13 @@
         Descripcion = p.Descripcion;
         return Descripcion;
     }
+    private void Remover(dynamic detalle)
+    {
+        Orden.Monto -= (detalle.Cantidad * detalle.Costo);
+
+        Orden.OrdenesDetalle.RemoveAll(i => i.Id == detalle.Id);
+        Orden.OrdenesDetalle.Remove(detalle);
+    }
 
 
     private void Buscar()
